@@ -16,4 +16,3 @@ gem 'jquery-rails'
 
 
 gem 'capistrano'
-gem 'cap-swallow'
