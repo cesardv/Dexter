@@ -10,11 +10,12 @@ group :assets do
 end
 
 gem 'jquery-rails'
-gem 'resque'
-
+gem 'redis'
+gem 'haml'
 
 gem 'capistrano'
 gem 'unicorn'
+gem 'simple_form'
 
 group :test, :development do
   gem 'spin'

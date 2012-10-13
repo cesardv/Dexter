@@ -3,13 +3,13 @@ class Drop < Struct.new(:attributes)
   REDIRECT = 'redirect'
   TYPES = [FILE, REDIRECT]
   include ActiveModel::Validations
-  attr_accessor :add_errors
+  attr_accessor :add_errors, :persisted
   
   validates :type, :presence => true, :inclusion => {:in => TYPES}
   validates :id, :presence => true
   validate :validate_add_errors
 
-  [:type, :id].each do |attribute|
+  [:type, :id, :redirect_url].each do |attribute|
     define_method "#{attribute}=" do |value|
       self.attributes ||= Hash.new
       self.attributes.merge!(
@@ -27,7 +27,10 @@ class Drop < Struct.new(:attributes)
     attributes = REDIS.get(id)
     return nil if attributes.blank?
 
-    Drop.instantiate(ActiveSupport::JSON.decode(attributes).with_indifferent_access)
+    drop = Drop.instantiate(ActiveSupport::JSON.decode(attributes).with_indifferent_access)
+    drop.persisted = true
+
+    drop
   end
 
   def self.create(attributes)
@@ -41,10 +44,27 @@ class Drop < Struct.new(:attributes)
       }
       return drop
     end
+    drop.persisted = true
 
     REDIS.set(id, attributes.to_json) if drop.valid?
 
     drop
+  end
+
+  def model_name
+    'drop'
+  end
+
+  def to_key
+    self.persisted? ? self.id : nil
+  end
+
+  def to_model
+    self
+  end
+
+  def persisted?
+    self.persisted
   end
 
   private

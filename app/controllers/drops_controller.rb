@@ -1,5 +1,5 @@
 class DropsController < ApplicationController
   def new
-    render :json => {:lol => :omg}
+    @drop = Drop.new
   end
 end

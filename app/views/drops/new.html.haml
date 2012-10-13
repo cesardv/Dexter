@@ -1,0 +1,5 @@
+= simple_form_for @drop do |f|
+  = f.input :type, :as => :select, :collection => Drop::TYPES
+  = f.input :id
+  = f.input :redirect_url
+  = f.submit
