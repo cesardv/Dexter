@@ -17,3 +17,7 @@ gem 'jquery-rails'
 
 gem 'capistrano'
 gem 'unicorn'
+
+group :test, :deveopment do
+  gem 'spin'
+end
