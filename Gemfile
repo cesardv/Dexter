@@ -16,6 +16,8 @@ gem 'resque'
 gem 'capistrano'
 gem 'unicorn'
 
-group :test, :deveopment do
+group :test, :development do
   gem 'spin'
+  gem 'shoulda'
+  gem 'shoulda-matchers'
 end

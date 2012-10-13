@@ -1,6 +1,11 @@
 require 'test_helper'
 
 class DropTest < ActiveSupport::TestCase
+  should allow_value("hi").for(:id)
+  should_not allow_value(nil).for(:id)
+  should allow_value(Drop::FILE).for(:type)
+  should_not allow_value(nil).for(:type)
+  should_not allow_value("omg").for(:type)
 
   test "find_by_id / create file drop" do
     attributes = {
@@ -38,10 +43,21 @@ class DropTest < ActiveSupport::TestCase
     assert drop.is_a?(Redirect)
   end
 
-  test "validation error" do
+  test "validation error doesn't store the item" do
     drop = Drop.create(:id => 'omg')
     assert drop.invalid?
     assert_nil Drop.find_by_id('omg')
+  end
+
+  test "id is already present when creating" do
+    file = Drop.create(:id => 'omg', :type => Drop::FILE)
+    assert file.valid?
+
+    redirect = Drop.create(:id => 'omg', :type => Drop::REDIRECT)
+    assert redirect.invalid?
+    assert_equal ['already taken'], redirect.errors[:id]
+    assert Drop.find_by_id('omg').is_a?(FileDrop)
+
   end
 
 
