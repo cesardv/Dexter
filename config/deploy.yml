@@ -1,0 +1,12 @@
+default: &DEFAULT
+  application: dexter
+  repository: 'git@github.com:railsrumble/Dexter.git'
+  deploy_to: '/usr/share/railsrumble/dexter'
+  deploy_via: remote_cache
+  ruby_version: 1.9.3-p0
+  use_asset_sync: true
+  seed_on_migration: true
+
+production:
+  <<: *DEFAULT
+  env_name: root@198.74.58.232
