@@ -15,7 +15,7 @@ DAEMON_OPTS="-c config/unicorn.rb -E $ENV -D"
 
 NAME=unicorn_rails
 DESC=unicorn_rails
-PID=/var/www/sms/shared/pids/unicorn.pid
+PID=/var/www/dexter/shared/pids/unicorn.pid
 
 case "$1" in
   start)
