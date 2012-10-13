@@ -16,3 +16,4 @@ gem 'jquery-rails'
 
 
 gem 'capistrano'
+gem 'unicorn'

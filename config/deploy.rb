@@ -40,7 +40,7 @@ namespace :deploy do
 
   task :restart, :roles => :app, :except => { :no_release => true } do
     run "cd #{release_path} && RAILS_ENV=#{environment} bundle exec rake assets:precompile"
-    sudo "sh -c 'cd #{release_path} && ENV=#{environment} #{ruby_binary_path}/bundle exec bash unicorn_exec stop && ENV=#{environment} #{ruby_binary_path}/bundle exec bash unicorn_exec start'"
+    sudo "sh -c 'cd #{release_path} && ENV=#{environment} bundle exec bash unicorn_exec stop && ENV=#{environment} bundle exec bash unicorn_exec start'"
   end
 end
 
