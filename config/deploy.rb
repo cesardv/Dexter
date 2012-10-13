@@ -39,8 +39,8 @@ namespace :deploy do
   end
 
   task :restart, :roles => :app, :except => { :no_release => true } do
-    run "cd /var/www/sms/current && RAILS_ENV=#{environment} bundle exec rake assets:precompile"
-    sudo "sh -c 'cd /var/www/sms/current && ENV=#{environment} #{ruby_binary_path}/bundle exec bash unicorn_exec stop && ENV=#{environment} #{ruby_binary_path}/bundle exec bash unicorn_exec start'"
+    run "cd #{release_path} && RAILS_ENV=#{environment} bundle exec rake assets:precompile"
+    sudo "sh -c 'cd #{release_path} && ENV=#{environment} #{ruby_binary_path}/bundle exec bash unicorn_exec stop && ENV=#{environment} #{ruby_binary_path}/bundle exec bash unicorn_exec start'"
   end
 end
 
@@ -79,7 +79,7 @@ end
 after "deploy:rollback:revision", "bundler:install"
 after "deploy:update_code", "bundler:bundle_new_release"
 
-after "deploy:create_symlink", "deploy:restart_workers"
+#after "deploy:create_symlink", "deploy:restart_workers"
 
 def run_remote_rake(rake_cmd)
   rake_args = ENV['RAKE_ARGS'].to_s.split(',')
