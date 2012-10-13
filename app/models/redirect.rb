@@ -1,0 +1,3 @@
+class Redirect < Drop
+
+end

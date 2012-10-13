@@ -1,0 +1,3 @@
+class FileDrop < Drop
+
+end
