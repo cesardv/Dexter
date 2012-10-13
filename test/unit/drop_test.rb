@@ -11,6 +11,7 @@ class DropTest < ActiveSupport::TestCase
     drop = Drop.create(attributes)
     assert_not_nil drop
     assert drop.is_a?(FileDrop)
+    assert drop.valid?
 
     assert_equal Drop::FILE, drop.type
 
@@ -28,12 +29,19 @@ class DropTest < ActiveSupport::TestCase
     drop = Drop.create(attributes)
     assert_not_nil drop
     assert drop.is_a?(Redirect)
+    assert drop.valid?
 
     assert_equal Drop::REDIRECT, drop.type
 
     drop = Drop.find_by_id('omg')
     assert_not_nil drop
     assert drop.is_a?(Redirect)
+  end
+
+  test "validation error" do
+    drop = Drop.create(:id => 'omg')
+    assert drop.invalid?
+    assert_nil Drop.find_by_id('omg')
   end
 
 
