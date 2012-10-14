@@ -22,7 +22,7 @@
         = image_tag '3.png', :width => 30, :class => 'number'
         = f.input :file, :as => :file, :wrapper_html => {:class => 'field', :id => 'file-wrapper'}, :label => 'file to upload', :input_html => {:class => 'uploadWidget', :id => 'file-id'}
         .clr
-      = f.submit 'Create', :id => 'submit'
+      = f.submit 'Create', :id => 'submit', :class => 'button'
       .clr
       .meter.blue{:style => 'visibility:hidden;margin:15px;'}
         %span#progress-bar
