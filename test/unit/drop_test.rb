@@ -27,8 +27,9 @@ class DropTest < ActiveSupport::TestCase
 
   test "find_by_id / create redirect" do
     attributes = {
-      :id    => 'omg',
-      :type => Drop::REDIRECT
+      :id           => 'omg',
+      :type         => Drop::REDIRECT,
+      :redirect_url => mock_url
     }
 
     drop = Drop.create(attributes)
@@ -41,6 +42,7 @@ class DropTest < ActiveSupport::TestCase
     drop = Drop.find_by_id('omg')
     assert_not_nil drop
     assert drop.is_a?(Redirect)
+    assert_equal mock_url, drop.redirect_url
   end
 
   test "validation error doesn't store the item" do

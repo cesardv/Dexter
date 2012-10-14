@@ -1,5 +1,4 @@
 TODO:
 
-1. Add ssh key for judges to box
 2. Add support for file uploads
 3. Add stats

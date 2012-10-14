@@ -6,4 +6,9 @@ class ActiveSupport::TestCase
   setup do
     REDIS.flushall
   end
+
+  def mock_url
+    @mock_url ||= "http://google.com"
+  end
+
 end

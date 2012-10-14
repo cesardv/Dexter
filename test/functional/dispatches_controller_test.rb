@@ -6,11 +6,11 @@ class DispatchesControllerTest < ActionController::TestCase
     drop = Drop.create(
       :id => 'omg/lol',
       :type => Drop::REDIRECT,
-      :redirect_url => test_url
+      :redirect_url => mock_url
     )
 
     get :show, :id => 'omg/lol'
-    assert_redirected_to test_url
+    assert_redirected_to mock_url
   end
 
   test "dispatch not found" do
@@ -18,11 +18,4 @@ class DispatchesControllerTest < ActionController::TestCase
     assert_response :not_found
   end
 
-
-
-  private
-
-  def test_url
-    @test_url ||= "http://google.com"
-  end
 end
