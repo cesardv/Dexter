@@ -6,15 +6,19 @@
   .drop-zone
     = simple_form_for @drop, :url => drops_path do |f|
       = image_tag '1.png', :width => 30, :class => 'number'
-      = f.input :type, :as => :select, :collection => Drop::TYPES, :wrapper_html => {:class => 'field'}, :label => 'type of drop'
+      = f.input :type, :as => :select, :collection => Drop::TYPES, :wrapper_html => {:class => 'field'}, :label => 'type of drop', :include_blank => false, :input_html => {:id => 'type'}
       .clr
       = image_tag '2.png', :width => 30, :class => 'number'
       = f.input :id, :wrapper_html => {:class => 'field'}, :label => 'http://dexter.io/'
       .clr
+
+      .redirect-section
         = image_tag '3.png', :width => 30, :class => 'number'
-      = f.input :redirect_url, :wrapper_html => {:class => 'field'}, :label => 'redirect to: '
-      .clr
+        = f.input :redirect_url, :wrapper_html => {:class => 'field'}, :label => 'redirect to: '
+        .clr
+
+      .upload-section.hidden
         = image_tag '3.png', :width => 30, :class => 'number'
-      = f.input :file, :as => :file, :wrapper_html => {:class => 'field'}, :label => 'file to upload'
+        = f.input :file, :as => :file, :wrapper_html => {:class => 'field'}, :label => 'file to upload', :input_html => {:class => 'uploadWidget'}
       .clr
       = f.submit

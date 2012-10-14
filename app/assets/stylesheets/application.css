@@ -263,3 +263,11 @@ h3 {
 select {
   margin-left: 10px;
 }
+
+.hidden {
+  display:none;
+}
+
+.uploadWidget {
+  margin-left:10px;
+}

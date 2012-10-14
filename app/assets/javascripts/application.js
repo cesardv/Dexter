@@ -13,3 +13,25 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//
+//
+
+$(function() {
+  var $type = $('#type');
+  var toggleDisplay = function() {
+    if($type.val()) {
+      if($type.val() == 'file') {
+        $('.redirect-section').hide();
+        $('.upload-section').show();
+      }
+      else {
+        $('.redirect-section').show();
+        $('.upload-section').hide();
+      }
+
+    }
+  };
+
+  toggleDisplay();
+  $type.change(toggleDisplay);
+})
