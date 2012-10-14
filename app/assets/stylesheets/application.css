@@ -18,9 +18,6 @@
 
 .afs-colaborate { font-family: "Colaborate", "Helvetica", "Arial", "Lucida Grande", "Gill Sans", "Verdana", sans-serif; font-size: 1.000em;}
 
-.afs-lekton { font-family: "Lekton", Menlo, Courier New, Courier, Mono, monospace; font-size: 0.962em;}
-
-
 @font-face {
 font-family: 'Colaborate';
 src: url('/fonts/ColabBol-webfont.eot');
@@ -154,41 +151,13 @@ font-family: 'Colaborate';
 src: url('/fonts/ColabLig-webfont.eot');
 src: local('☺'), url('/fonts/ColabLig-webfont.woff') format('woff'), url('/fonts/ColabLig-webfont.ttf') format('truetype'), url('/fonts/ColabLig-webfont.svg#webfontX4pGz9fc') format('svg');
 font-weight: 200;
-font-style: normal;
-}
-
-
-
-@font-face {
-font-family: 'Lekton';
-src: url('/fonts/Lekton-Bold-webfont.eot');
-src: local('☺'), url('/fonts/Lekton-Bold-webfont.woff') format('woff'), url('/fonts/Lekton-Bold-webfont.ttf') format('truetype'), url('/fonts/Lekton-Bold-webfont.svg#webfontX4pGz9fc') format('svg');
-font-weight: 700;
-font-style: normal;
-}
-
-
-@font-face {
-font-family: 'Lekton';
-src: url('/fonts/Lekton-Italic-webfont.eot');
-src: local('☺'), url('/fonts/Lekton-Italic-webfont.woff') format('woff'), url('/fonts/Lekton-Italic-webfont.ttf') format('truetype'), url('/fonts/Lekton-Italic-webfont.svg#webfontX4pGz9fc') format('svg');
-font-weight: 400;
-font-style: italic;
-}
-
-
-@font-face {
-font-family: 'Lekton';
-src: url('/fonts/Lekton-Regular-webfont.eot');
-src: local('☺'), url('/fonts/Lekton-Regular-webfont.woff') format('woff'), url('/fonts/Lekton-Regular-webfont.ttf') format('truetype'), url('/fonts/Lekton-Regular-webfont.svg#webfontX4pGz9fc') format('svg');
-font-weight: 400;
 font-style: normal;
 }
 
 
 body {
 	background: #f6f6f6 url('/assets/background.png') repeat fixed;
-  font-family:Colaborate, Helvetica;
+  font-family:Helvetica;
   font-weight:200;
   font-size:15px;
   
@@ -235,11 +204,13 @@ margin-bottom: 16px;
 h2 {
   margin: 3px;
   font-weight:600;
+  font-family:Colaborate;
 }
 
 h3 {
   margin: 3px;
   font-weight: 200;
+  font-family:Colaborate;
 }
 
 .drop-zone {
