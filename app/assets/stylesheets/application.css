@@ -39,10 +39,8 @@ font-style: normal;
 
 
 @font-face {
-font-family: 'Colaborate';
-src: url('/fonts/colabreg-webfont.eot');
-src: local('☺'), url('/fonts/colabreg-webfont.woff') format('woff'), url('/fonts/ColabReg-webfont.ttf') format('truetype'), url('/fonts/colabreg-webfont.svg#webfontX4pGz9fc') format('svg');
-font-weight: 400;
+font-family: 'Colaborate';Csrc: url('/fonts/colabreg-webfont.eot');src: local('☺'), url('/fonts/colabreg-webfont.woff') format('woff'), url('/fonts/colabreg-webfont.ttf') format('truetype'), url('/fonts/colabreg-webfont.svg#webfontX4pGz9fc') format('svg');
+src: local('☺'), url('/fonts/colabreg-webfont.woff') format('woff'), url('/fonts/colabreg-webfont.ttf') format('truetype'), url('/fonts/colabreg-webfont.svg#webfontX4pGz9fc') format('svg');
 font-style: normal;
 }
 
