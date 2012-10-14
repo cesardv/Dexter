@@ -1,5 +1,5 @@
 .left-half.darker
-  %h2 Drop Info 
+  %h2 drop info 
 
   .info-section
     .attr
@@ -17,3 +17,30 @@
     .attr
       %b url
       =url_for(:controller => :dispatches, :action => :show, :id => current_drop.id, :host => request.host)
+
+.right-half
+  %h2.highlight-color stats
+
+  .content-section
+    .attr
+      %b visits
+      = current_drop.stats.visits
+
+    .attr
+      %b desktop visits
+      = current_drop.stats.attributes.find_all {|s| s[:computer]}.count
+
+    .attr
+      %b mobile visits
+      = current_drop.stats.attributes.find_all {|s| s[:mobile]}.count
+
+    .attr
+      %b bot visits
+      = current_drop.stats.attributes.find_all {|s| s[:bot]}.count
+
+.clr
+.content-section
+  - if current_drop.stats.visits.zero?
+    %h2 check back for more stats
+  - else
+    = current_drop.stats.attributes.collect {|a| a[:timestamp]}

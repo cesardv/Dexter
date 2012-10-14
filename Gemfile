@@ -22,4 +22,5 @@ group :test, :development do
   gem 'spin'
   gem 'shoulda'
   gem 'shoulda-matchers'
+  gem 'timecop'
 end

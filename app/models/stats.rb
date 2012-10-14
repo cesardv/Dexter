@@ -15,9 +15,21 @@ class Stats < Struct.new(:drop)
   end
 
   def attributes
-    (REDIS.lrange(stats_key, 0, -1) || []).collect do |row|
+    @attributes ||= (REDIS.lrange(stats_key, 0, -1) || []).collect do |row|
       ActiveSupport::JSON.decode(row).with_indifferent_access
     end
+  end
+
+  def self.break(times, start_time, end_time, sections)
+    delta = (end_time - start_time) / sections
+
+    stats = times.inject(Hash.new) do |acc, time|
+      my_quartile = ((time - start_time)/ delta).floor
+      existing = acc[my_quartile] || 0
+      acc.merge!(my_quartile => existing + 1)
+    end
+
+    (0...sections).collect {|n| stats[n] || 0}
   end
 
   class Request < Struct.new(:user_agent)
