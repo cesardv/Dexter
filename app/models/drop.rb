@@ -46,9 +46,19 @@ class Drop < Struct.new(:attributes)
     end
     drop.persisted = true
 
-    REDIS.set(id, attributes.to_json) if drop.valid?
+    json_attributes = attributes.except(:file)
+    file = attributes[:file]
+    if file
+      REDIS.set(file_key_for(id), file.read)
+    end
+
+    REDIS.set(id, json_attributes.to_json) if drop.valid?
 
     drop
+  end
+
+  def self.file_key_for(id)
+    "#{id}:file"
   end
 
   def model_name

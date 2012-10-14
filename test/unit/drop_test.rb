@@ -9,8 +9,9 @@ class DropTest < ActiveSupport::TestCase
 
   test "find_by_id / create file drop" do
     attributes = {
-      :id    => 'omg',
-      :type => Drop::FILE
+      :id   => 'omg',
+      :type => Drop::FILE,
+      :file => mock_file
     }
 
     drop = Drop.create(attributes)
@@ -23,6 +24,7 @@ class DropTest < ActiveSupport::TestCase
     drop = Drop.find_by_id('omg')
     assert_not_nil drop
     assert drop.is_a?(FileDrop)
+    assert_equal mock_file.read, drop.file.read
   end
 
   test "find_by_id / create redirect" do

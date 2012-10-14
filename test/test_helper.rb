@@ -11,4 +11,8 @@ class ActiveSupport::TestCase
     @mock_url ||= "http://google.com"
   end
 
+  def mock_file
+    File.open(Rails.root.join("test", "fixtures", "farnsworth.png"))
+  end
+
 end
