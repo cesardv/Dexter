@@ -241,3 +241,25 @@ h3 {
 .drop-zone {
   margin-top:15px;
 }
+
+.highlight-color {
+ color: #66A0BB;
+}
+
+.number {
+  float:left;
+}
+
+.field {
+  float:left;
+  padding:4px;
+  padding-bottom:20px;
+}
+
+.clr {
+  clear:both;
+}
+
+select {
+  margin-left: 10px;
+}
