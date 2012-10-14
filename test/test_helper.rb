@@ -16,3 +16,9 @@ class ActiveSupport::TestCase
   end
 
 end
+
+class ActionController::TestCase
+  def mock_file
+    fixture_file_upload(Rails.root.join('test', 'fixtures', 'farnsworth.png'))
+  end
+end
