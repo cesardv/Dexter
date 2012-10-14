@@ -54,7 +54,7 @@ class DropTest < ActiveSupport::TestCase
   end
 
   test "id is already present when creating" do
-    file = Drop.create(:id => 'omg', :type => Drop::FILE)
+    file = Drop.create(:id => 'omg', :type => Drop::FILE, :file => mock_file)
     assert file.valid?
 
     redirect = Drop.create(:id => 'omg', :type => Drop::REDIRECT)

@@ -15,7 +15,7 @@ class Drop < Struct.new(:attributes)
   validates :id, :presence => true
   validate :validate_add_errors
 
-  [:type, :id, :redirect_url].each do |attribute|
+  [:type, :id, :redirect_url, :file].each do |attribute|
     define_method "#{attribute}=" do |value|
       self.attributes ||= Hash.new
       self.attributes.merge!(
