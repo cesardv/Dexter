@@ -18,4 +18,15 @@ class DispatchesControllerTest < ActionController::TestCase
     assert_response :not_found
   end
 
+  test "dispatch file" do
+    drop = Drop.create(
+      :id   => 'omg/lol',
+      :type => Drop::FILE,
+      :file => mock_file
+    )
+
+    get :show, :id => 'omg/lol'
+    assert_response :success
+  end
+
 end

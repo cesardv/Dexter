@@ -4,6 +4,12 @@ class Drop < Struct.new(:attributes)
   TYPES = [FILE, REDIRECT]
   include ActiveModel::Validations
   attr_accessor :add_errors, :persisted
+
+  TYPES.each do |type|
+    define_method "#{type}?" do
+      self.type == type
+    end
+  end
   
   validates :type, :presence => true, :inclusion => {:in => TYPES}
   validates :id, :presence => true
@@ -79,6 +85,12 @@ class Drop < Struct.new(:attributes)
 
   def to_param
     self.id
+  end
+
+  def file
+    file_data = REDIS.get(Drop.file_key_for(self.id))
+    return nil if file_data.nil?
+    FileDrop::RedisFile.new(file_data)
   end
 
   private
