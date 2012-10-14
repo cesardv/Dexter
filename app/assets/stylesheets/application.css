@@ -212,7 +212,8 @@ body {
 }
 
 .left-half {
-  width:45%;
+  width:40%;
+  padding:2%;
   float:left;
   background-color:black;
   height:40;
@@ -225,6 +226,8 @@ margin-bottom: 16px;
 }
 
 .right-half {
+  width:40%;
+  padding:2%;
   float:left;
   margin-left: 30px;
 }
