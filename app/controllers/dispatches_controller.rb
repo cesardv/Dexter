@@ -1,5 +1,6 @@
 class DispatchesController < ApplicationController
   before_filter :require_current_drop, :only => :show
+  after_filter  :track_stats
 
   def show
     if current_drop.redirect?
@@ -14,6 +15,12 @@ class DispatchesController < ApplicationController
 
 
   private
+
+  def track_stats
+    Thread.new do
+      current_drop.stats.record
+    end
+  end
 
   def current_drop
     Drop.find_by_id(params[:id])

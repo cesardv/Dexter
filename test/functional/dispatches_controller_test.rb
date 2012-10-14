@@ -9,8 +9,14 @@ class DispatchesControllerTest < ActionController::TestCase
       :redirect_url => mock_url
     )
 
+    assert_equal 0, drop.stats.visits
     get :show, :id => 'omg/lol'
     assert_redirected_to mock_url
+
+    # since we track stats async need to give
+    # the thread a chance to do it's work
+    sleep(1.0/24.0) 
+    assert_equal 1, drop.stats.visits
   end
 
   test "dispatch not found" do

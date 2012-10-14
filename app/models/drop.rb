@@ -101,6 +101,10 @@ class Drop < Struct.new(:attributes)
     FileDrop::RedisFile.new(file_data, self.content_type)
   end
 
+  def stats
+    Stats.new(self)
+  end
+
   private
   def self.instantiate(attributes)
     type = (attributes || Hash.new)[:type]
