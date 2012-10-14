@@ -188,7 +188,7 @@ font-style: normal;
 
 body {
 	background: #f6f6f6 url('/assets/background.png') repeat fixed;
-  font-family:Colaborate;
+  font-family:Colaborate, Helvetica;
   font-weight:200;
   font-size:15px;
   
