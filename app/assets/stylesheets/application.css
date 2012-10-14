@@ -32,7 +32,7 @@ font-style: normal;
 @font-face {
 font-family: 'Colaborate';
 src: url('/fonts/colabmed-webfont.eot');
-src: local('☺'), url('/fonts/ColabMed-webfont.woff') format('woff'), url('/fonts/colabmed-webfont.ttf') format('truetype'), url('/fonts/colabmed-webfont.svg#webfontX4pGz9fc') format('svg');
+src: local('☺'), url('/fonts/colabmed-webfont.woff') format('woff'), url('/fonts/colabmed-webfont.ttf') format('truetype'), url('/fonts/colabmed-webfont.svg#webfontX4pGz9fc') format('svg');
 font-weight: 500;
 font-style: normal;
 }
