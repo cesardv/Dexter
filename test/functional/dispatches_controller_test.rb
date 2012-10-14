@@ -17,6 +17,11 @@ class DispatchesControllerTest < ActionController::TestCase
     # the thread a chance to do it's work
     sleep(1.0/24.0) 
     assert_equal 1, drop.stats.visits
+
+    assert_equal 1, drop.stats.attributes.size
+    
+    drop_stat = drop.stats.attributes.first
+    assert_not_nil drop_stat[:timestamp]
   end
 
   test "dispatch not found" do
