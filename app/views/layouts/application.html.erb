@@ -8,7 +8,7 @@
 </head>
 <body>
 
-  <%= image_tag 'logo.png', :height => 125, :class => 'logo'  %>
+  <%= link_to image_tag('logo.png', :height => 125, :class => 'logo', :border => 0), root_url  %>
 
   <div class="wrapper">
     <%= yield %>

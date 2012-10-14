@@ -43,4 +43,13 @@
   - if current_drop.stats.visits.zero?
     %h2 check back for more stats
   - else
-    = current_drop.stats.attributes.collect {|a| a[:timestamp]}
+    %h2.highlight-color visits over time
+    #placeholder{:style => 'height:300px'}
+
+    :javascript
+      $(function () {
+        var d1 = #{current_drop.stats.broken_data.inject([]) {|acc, val| acc << [acc.size, val]}.to_json};
+        
+        $.plot($("#placeholder"), [ d1 ]);
+      });
+

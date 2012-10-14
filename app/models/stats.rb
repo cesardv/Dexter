@@ -1,4 +1,5 @@
 class Stats < Struct.new(:drop)
+  SECTIONS = 20
 
   def visits
     (REDIS.llen(stats_key) || 0).to_i
@@ -20,8 +21,14 @@ class Stats < Struct.new(:drop)
     end
   end
 
+  def broken_data
+    times = attributes.collect {|a| Time.parse(a[:timestamp])}
+    Stats.break(times, times.last, Time.now, SECTIONS)
+  end
+
   def self.break(times, start_time, end_time, sections)
     delta = (end_time - start_time) / sections
+    return [] if delta.zero?
 
     stats = times.inject(Hash.new) do |acc, time|
       my_quartile = ((time - start_time)/ delta).floor

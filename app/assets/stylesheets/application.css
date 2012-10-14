@@ -198,6 +198,7 @@ body {
   position: absolute;
   top:0px;
   left:10px;
+  border:none;
 }
 
 .wrapper {
@@ -297,4 +298,12 @@ input {
 
 .content-section {
   padding: 10px;
+}
+
+#placeholder {
+  margin:30px;
+  width:700px;
+}
+.xAxis {
+  display:none;
 }
