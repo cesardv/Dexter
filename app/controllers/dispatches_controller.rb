@@ -7,11 +7,8 @@ class DispatchesController < ApplicationController
     else
       options = {:disposition => 'inline'}
 
-      #TODO correct content_type
-      options.merge!(:type => 'image/png')
-      #options.merge!({:type => current_cached_file.content_type}) if current_cached_file.content_type
+      options.merge!({:type => current_drop.content_type}) if current_drop.content_type
       send_data current_drop.file.read, options
-      
     end
   end
 

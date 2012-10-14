@@ -27,6 +27,7 @@ class DispatchesControllerTest < ActionController::TestCase
 
     get :show, :id => 'omg/lol'
     assert_response :success
+    assert_equal mock_file.content_type, response.headers['Content-Type']
   end
 
 end

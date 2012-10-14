@@ -29,3 +29,10 @@ class FileWithContentType < File
     "image/png"
   end
 end
+
+class Rack::Test::UploadedFile
+  # By default this is nil, set this to a value so we can test
+  def content_type
+    "image/png"
+  end
+end
