@@ -99,7 +99,6 @@
 
     // Set up events
     xhr.upload.addEventListener('progress', onprogressHandler, false);
-    xhr.upload.addEventListener('load', onloadHandler, false);
     xhr.addEventListener('readystatechange', onreadystatechangeHandler, false);
 
     // Set up request
@@ -107,12 +106,6 @@
 
     // Fire!
     xhr.send(formData);
-  }
-
-  // Handle the end of the transmission
-  function onloadHandler(evt) {
-    var div = document.getElementById('upload-status');
-    div.innerHTML = 'Upload successful!';
   }
 
   // Handle the progress
