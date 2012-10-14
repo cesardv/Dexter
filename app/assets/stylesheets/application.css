@@ -121,14 +121,13 @@ body {
   width: 94%;
   margin:auto;
   margin-top:135px;
-  min-height:400px;
+  min-height:1000px;
   padding:10px;
   border: 1px solid #EDEDED;
 }
 
 .left-half {
   width:40%;
-  padding:2%;
   float:left;
   background-color:black;
   height:40;
@@ -371,6 +370,10 @@ input {
 
 
 
+    /* twitter */
+    .timeline {
+      width: 370px !important;
+    }
 
     /* button */
 .button {
