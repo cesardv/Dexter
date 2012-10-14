@@ -10,17 +10,18 @@
       = f.input :type, :as => :select, :collection => Drop::TYPES, :wrapper_html => {:class => 'field'}, :label => 'type of drop', :include_blank => false, :input_html => {:id => 'type'}
       .clr
       = image_tag '2.png', :width => 30, :class => 'number'
-      = f.input :id, :wrapper_html => {:class => 'field'}, :label => 'http://dexter.io/'
+      = f.input :id, :wrapper_html => {:class => 'field', :id => 'id-wrapper'}, :label => 'http://dexter.io/'
       .clr
 
       .redirect-section
         = image_tag '3.png', :width => 30, :class => 'number'
-        = f.input :redirect_url, :wrapper_html => {:class => 'field'}, :label => 'redirect to: '
+        = f.input :redirect_url, :wrapper_html => {:class => 'field', :id => 'redirect_url-wrapper'}, :label => 'redirect to: '
         .clr
 
       .upload-section.hidden
         = image_tag '3.png', :width => 30, :class => 'number'
-        = f.input :file, :as => :file, :wrapper_html => {:class => 'field'}, :label => 'file to upload', :input_html => {:class => 'uploadWidget', :id => 'file-id'}
+        = f.input :file, :as => :file, :wrapper_html => {:class => 'field', :id => 'file-wrapper'}, :label => 'file to upload', :input_html => {:class => 'uploadWidget', :id => 'file-id'}
+        #progress
       .clr
       = f.submit
 

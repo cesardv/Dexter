@@ -13,7 +13,11 @@ class DropsController < ApplicationController
         redirect_to drop_path(@drop)
       end
     else
-      render :new, :status => :unprocessable_entity
+      if params['js-upload']
+        render :json => {:errors => @drop.errors}, :status => :unprocessable_entity
+      else
+        render :new, :status => :unprocessable_entity
+      end
     end
   end
 

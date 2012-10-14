@@ -10,7 +10,7 @@
 
   <%= link_to image_tag('logo.png', :height => 125, :class => 'logo', :border => 0), root_url  %>
 
-  <div class="wrapper" id="result">
+  <div class="wrapper">
     <%= yield %>
   </div>
 
@@ -50,8 +50,6 @@ if (supportAjaxUploadWithProgress()) {
   // Init the Ajax form submission
   initFullFormAjaxUpload();
 
-  // Init the single-field file upload
-  //initFileOnlyAjaxUpload();
 }
 
 function initFullFormAjaxUpload() {
@@ -70,24 +68,6 @@ function initFullFormAjaxUpload() {
 
     // Avoid normal form submission
     return false;
-  }
-}
-
-function initFileOnlyAjaxUpload() {
-  var uploadBtn = document.getElementById('upload-button-id');
-  uploadBtn.onclick = function (evt) {
-    var formData = new FormData();
-
-    // Since this is the file only, we send it to a specific location
-    var action = '/upload';
-
-    // FormData only has the file
-    var fileInput = document.getElementById('file-id');
-    var file = fileInput.files[0];
-    formData.append('our-file', file);
-
-    // Code common to both variants
-    sendXHRequest(formData, action);
   }
 }
 
@@ -142,19 +122,42 @@ function onreadystatechangeHandler(evt) {
   }
 
   if (status == '200' && evt.target.responseText) {
-    var result = document.getElementById('result');
     window.location = $.parseJSON(evt.target.response).url;
-    console.log(evt.target.responseText.url);
-    result.innerHTML = '<p>The server saw it as:</p><pre>' + evt.target.responseText + '</pre>';
+  }
+  else {
+    console.log("not success");
+    console.log($.parseJSON(evt.target.responseText));
+    console.log("yyyyy")
+    var errors = $.parseJSON(evt.target.responseText).errors;
+    
+    console.log("errors");
+    console.log(errors);
+    $.each(errors, function(key, value) {
+      if($('#' + key + "-wrapper.field_with_errors").size() > 0) {
+        return
+      }
+
+      $("#" + key + "-wrapper").addClass('field_with_errors').append("<div class=\"error\">" + value + "</div>");
+      console.log("key: " + key)
+      console.log("value: " + value)
+    });
+    console.log(errors);
   }
 }
+
+
+
+$('form').submit(function() {
+$('.field_with_errors').removeClass('field_with_errors')
+$('.error').remove();
+});
+
 });
   </script>
 
   <!-- Placeholders for messages set by event handlers -->
   <p id="upload-status"></p>
   <p id="progress"></p>
-  <pre id="result"></pre>
 
 </form>
   
