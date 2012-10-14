@@ -37,6 +37,9 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
+    carrierwave (0.6.2)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
     coffee-rails (3.2.2)
       coffee-script (>= 2.2.0)
       railties (~> 3.2.0)
@@ -116,6 +119,7 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sqlite3 (1.3.6)
     thor (0.16.0)
     tilt (1.3.3)
     timecop (0.4.5)
@@ -137,6 +141,7 @@ PLATFORMS
 DEPENDENCIES
   agent_orange
   capistrano
+  carrierwave
   coffee-rails (~> 3.2.1)
   haml
   jquery-rails
@@ -147,6 +152,7 @@ DEPENDENCIES
   shoulda-matchers
   simple_form
   spin
+  sqlite3
   timecop
   uglifier (>= 1.0.3)
   unicorn

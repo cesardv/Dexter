@@ -4,7 +4,7 @@
 .right-half
   %h2.highlight-color make a new drop...
   .drop-zone
-    = simple_form_for @drop, :url => drops_path do |f|
+    = simple_form_for @drop, :url => drops_path, :html => { :multipart => true, :id => "fileupload"  } do |f|
       = image_tag '1.png', :width => 30, :class => 'number'
       = f.input :type, :as => :select, :collection => Drop::TYPES, :wrapper_html => {:class => 'field'}, :label => 'type of drop', :include_blank => false, :input_html => {:id => 'type'}
       .clr
@@ -22,3 +22,25 @@
         = f.input :file, :as => :file, :wrapper_html => {:class => 'field'}, :label => 'file to upload', :input_html => {:class => 'uploadWidget'}
       .clr
       = f.submit
+
+:javascript
+      $(function () {
+        // Initialize the jQuery File Upload widget:
+        alert('hi')
+        $('#fileupload').fileupload();
+        // 
+        // Load existing files:
+        $.getJSON($('#fileupload').prop('action'), function (files) {
+          var fu = $('#fileupload').data('fileupload'), 
+            template;
+          fu._adjustMaxNumberOfFiles(-files.length);
+          template = fu._renderDownload(files)
+            .appendTo($('#fileupload .files'));
+          // Force reflow:
+          fu._reflow = fu._transition && template.length &&
+            template[0].offsetWidth;
+          template.addClass('in');
+          $('#loading').remove();
+        });
+
+    });
