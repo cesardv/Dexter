@@ -7,7 +7,11 @@ class DropsController < ApplicationController
   def create
     @drop = Drop.create(drop_params)
     if @drop.valid?
-      redirect_to drop_path(@drop)
+      if params["js-upload"] 
+        render :json => {:url => drop_url(@drop)}
+      else
+        redirect_to drop_path(@drop)
+      end
     else
       render :new, :status => :unprocessable_entity
     end

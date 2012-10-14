@@ -4,7 +4,8 @@
 .right-half
   %h2.highlight-color make a new drop...
   .drop-zone
-    = simple_form_for @drop, :url => drops_path do |f|
+    = simple_form_for @drop, :url => drops_path, :html => {:id => 'form-id'} do |f|
+      %input{:type => 'hidden', :name => 'js-upload', :value => false, :id => 'js-upload'}
       = image_tag '1.png', :width => 30, :class => 'number'
       = f.input :type, :as => :select, :collection => Drop::TYPES, :wrapper_html => {:class => 'field'}, :label => 'type of drop', :include_blank => false, :input_html => {:id => 'type'}
       .clr
@@ -19,6 +20,7 @@
 
       .upload-section.hidden
         = image_tag '3.png', :width => 30, :class => 'number'
-        = f.input :file, :as => :file, :wrapper_html => {:class => 'field'}, :label => 'file to upload', :input_html => {:class => 'uploadWidget'}
+        = f.input :file, :as => :file, :wrapper_html => {:class => 'field'}, :label => 'file to upload', :input_html => {:class => 'uploadWidget', :id => 'file-id'}
       .clr
       = f.submit
+
