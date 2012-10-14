@@ -21,7 +21,16 @@
       .upload-section.hidden
         = image_tag '3.png', :width => 30, :class => 'number'
         = f.input :file, :as => :file, :wrapper_html => {:class => 'field', :id => 'file-wrapper'}, :label => 'file to upload', :input_html => {:class => 'uploadWidget', :id => 'file-id'}
-        #progress
+        .clr
+      = f.submit 'Create', :id => 'submit'
       .clr
-      = f.submit
+      .meter.blue{:style => 'visibility:hidden;margin:15px;'}
+        %span#progress-bar
+ 
+        .clr
+        
+
+       
+
+
 

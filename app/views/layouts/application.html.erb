@@ -105,9 +105,9 @@ function onloadHandler(evt) {
 
 // Handle the progress
 function onprogressHandler(evt) {
-  var div = document.getElementById('progress');
-  var percent = evt.loaded/evt.total*100;
-  div.innerHTML = 'Progress: ' + percent + '%';
+  var percent = Math.floor(evt.loaded/evt.total*100);
+  $('#progress-bar').attr('style', 'width:' + percent + '%;');
+  $('.meter').attr('style', '');
 }
 
 // Handle the response from the server
@@ -131,12 +131,14 @@ function onreadystatechangeHandler(evt) {
     }
     var errors = parsed.errors;
     
+    $('.meter').attr("style", "visibility:hidden");
     $.each(errors, function(key, value) {
       if($('#' + key + "-wrapper.field_with_errors").size() > 0) {
         return;
       }
 
       $("#" + key + "-wrapper").addClass('field_with_errors').append("<div class=\"error\">" + value + "</div>");
+      $('#submit').show();
     });
   }
 }
@@ -146,6 +148,7 @@ function onreadystatechangeHandler(evt) {
 $('form').submit(function() {
 $('.field_with_errors').removeClass('field_with_errors')
 $('.error').remove();
+$('#submit').hide();
 });
 
 });
