@@ -8,7 +8,11 @@
 </head>
 <body>
 
-<%= yield %>
+  <%= image_tag 'logo.png', :height => 125, :class => 'logo'  %>
+
+  <div class="wrapper">
+    <%= yield %>
+  </div>
 
 </body>
 </html>

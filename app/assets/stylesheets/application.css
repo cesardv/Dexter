@@ -11,3 +11,43 @@
  *= require_self
  *= require_tree .
  */
+
+
+body {
+	background: #f6f6f6 url('/assets/background.png') repeat fixed;
+  
+}
+
+.logo {
+  position: absolute;
+  top:0px;
+  left:10px;
+}
+
+.wrapper {
+  background-color:white;
+  width: 94%;
+  margin:auto;
+  margin-top:135px;
+  min-height:400px;
+  padding:10px;
+  border: 1px solid #EDEDED;
+}
+
+.left-half {
+  width:45%;
+  float:left;
+  background-color:black;
+  height:40;
+}
+
+.darker {
+padding: 10px;
+background-color: #F1F1F1;
+margin-bottom: 16px;
+}
+
+.right-half {
+  float:left;
+  margin-left: 30px;
+}
