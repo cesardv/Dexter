@@ -105,7 +105,7 @@ font-style: normal;
 @font-face {
 font-family: 'Colaborate';
 src: url('/fonts/colablig-webfont.eot');
-src: local('☺'), url('/fonts/colablig-webfont.woff') format('woff'), url('/fonts/ColabLig-webfont.ttf') format('truetype'), url('/fonts/ColabLig-webfont.svg#webfontX4pGz9fc') format('svg');
+src: local('☺'), url('/fonts/colablig-webfont.woff') format('woff'), url('/fonts/colablig-webfont.ttf') format('truetype'), url('/fonts/colablig-webfont.svg#webfontX4pGz9fc') format('svg');
 font-weight: 200;
 font-style: normal;
 }
