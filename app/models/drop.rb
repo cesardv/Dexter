@@ -67,6 +67,10 @@ class Drop < Struct.new(:attributes)
     self.persisted
   end
 
+  def to_param
+    self.id
+  end
+
   private
   def self.instantiate(attributes)
     type = (attributes || Hash.new)[:type]

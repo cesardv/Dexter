@@ -1,4 +1,4 @@
-= simple_form_for @drop do |f|
+= simple_form_for @drop, :url => drops_path do |f|
   = f.input :type, :as => :select, :collection => Drop::TYPES
   = f.input :id
   = f.input :redirect_url
