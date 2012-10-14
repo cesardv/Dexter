@@ -125,23 +125,19 @@ function onreadystatechangeHandler(evt) {
     window.location = $.parseJSON(evt.target.response).url;
   }
   else {
-    console.log("not success");
-    console.log($.parseJSON(evt.target.responseText));
-    console.log("yyyyy")
-    var errors = $.parseJSON(evt.target.responseText).errors;
+    var parsed = $.parseJSON(evt.target.responseText);
+    if( ! parsed) {
+      return;
+    }
+    var errors = parsed.errors;
     
-    console.log("errors");
-    console.log(errors);
     $.each(errors, function(key, value) {
       if($('#' + key + "-wrapper.field_with_errors").size() > 0) {
-        return
+        return;
       }
 
       $("#" + key + "-wrapper").addClass('field_with_errors').append("<div class=\"error\">" + value + "</div>");
-      console.log("key: " + key)
-      console.log("value: " + value)
     });
-    console.log(errors);
   }
 }
 
