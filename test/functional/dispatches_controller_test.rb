@@ -22,6 +22,7 @@ class DispatchesControllerTest < ActionController::TestCase
     
     drop_stat = drop.stats.attributes.first
     assert_not_nil drop_stat[:timestamp]
+    assert_equal "Rails Testing", drop_stat[:user_agent]
   end
 
   test "dispatch not found" do

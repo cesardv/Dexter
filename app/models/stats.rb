@@ -4,10 +4,10 @@ class Stats < Struct.new(:drop)
     (REDIS.llen(stats_key) || 0).to_i
   end
 
-  def record
-    stats = {
+  def record(attributes)
+    stats = attributes.merge({
       :timestamp => Time.now
-    }
+    })
 
     REDIS.lpush(stats_key, stats.to_json)
   end

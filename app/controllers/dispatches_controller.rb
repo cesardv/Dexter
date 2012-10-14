@@ -18,7 +18,10 @@ class DispatchesController < ApplicationController
 
   def track_stats
     Thread.new do
-      current_drop.stats.record
+      attributes = {
+        :user_agent => request.env["HTTP_USER_AGENT"]
+      }
+      current_drop.stats.record(attributes)
     end
   end
 
