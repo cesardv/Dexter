@@ -4,6 +4,5 @@ Dexter::Application.routes.draw do
 
   root :to => 'drops#new'
 
-
   match '/:id', :constraints => {:id => /.*/}, :controller => :dispatches, :action => :show
 end

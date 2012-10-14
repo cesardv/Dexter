@@ -271,3 +271,27 @@ select {
 .uploadWidget {
   margin-left:10px;
 }
+
+.info-section {
+  padding: 10px;
+}
+
+input {
+  width: 200px;
+}
+
+.error {
+  color: #444444;
+  font-weight:bold;
+  display:block;
+  padding-bottom:0;
+}
+
+.field_with_errors {
+  background-color:#eaccd1;
+}
+
+.field_with_errors.field {
+  padding-bottom:4px;
+}
+

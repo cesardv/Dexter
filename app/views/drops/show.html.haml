@@ -1,1 +1,19 @@
-= current_drop.redirect_url
+.left-half.darker
+  %h2 Drop Info 
+
+  .info-section
+    .attr
+      %b type
+      = current_drop.type
+
+    - if current_drop.redirect?
+      .attr
+        %b redirect url
+        = current_drop.redirect_url
+    -else
+      .attr
+        %b file
+        = link_to 'link', url_for(:controller => :dispatches, :action => :show, :id => current_drop.id) 
+    .attr
+      %b url
+      =url_for(:controller => :dispatches, :action => :show, :id => current_drop.id, :host => request.host)
