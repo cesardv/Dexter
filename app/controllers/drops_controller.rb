@@ -1,4 +1,5 @@
 class DropsController < ApplicationController
+  before_filter :require_current_drop, :only => :show
   def new
     @drop = Drop.new
   end
@@ -12,8 +13,21 @@ class DropsController < ApplicationController
     end
   end
 
+  def show
+  end
+
 
   private
+
+  def require_current_drop
+    render_not_found unless current_drop
+  end
+
+  helper_method :current_drop
+  def current_drop
+    @current_drop ||= Drop.find_by_id(params[:id])
+  end
+
   def drop_params
     params[:drop] || params[:redirect] || params[:file_drop]
   end

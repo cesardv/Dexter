@@ -25,6 +25,18 @@ class DropsControllerTest < ActionController::TestCase
     assert_response :unprocessable_entity
   end
 
+  test "show not found" do
+    get :show, :id => 'omg'
+    assert_response :not_found
+  end
+
+  test "show found" do
+    drop = Drop.create(:id => 'omg', :type => Drop::REDIRECT)
+    assert drop.valid?
+    get :show, :id => 'omg'
+    assert_response :success
+  end
+
   private
 
   def test_url
