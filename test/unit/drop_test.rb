@@ -25,6 +25,7 @@ class DropTest < ActiveSupport::TestCase
     assert_not_nil drop
     assert drop.is_a?(FileDrop)
     assert_equal mock_file.read, drop.file.read
+    assert_equal mock_file.content_type, drop.file.content_type
   end
 
   test "find_by_id / create redirect" do

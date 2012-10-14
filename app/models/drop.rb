@@ -15,7 +15,7 @@ class Drop < Struct.new(:attributes)
   validates :id, :presence => true
   validate :validate_add_errors
 
-  [:type, :id, :redirect_url, :file].each do |attribute|
+  [:type, :id, :redirect_url, :content_type].each do |attribute|
     define_method "#{attribute}=" do |value|
       self.attributes ||= Hash.new
       self.attributes.merge!(
@@ -41,9 +41,12 @@ class Drop < Struct.new(:attributes)
 
   def self.create(attributes)
     id = attributes[:id]
+    content_type = attributes[:file].try(:content_type)
+
     existing_drop = Drop.find_by_id(id)
 
-    drop = Drop.instantiate(attributes.with_indifferent_access)
+    drop_attributes = attributes.with_indifferent_access.merge(:content_type => content_type)
+    drop = Drop.instantiate(drop_attributes)
     unless existing_drop.blank?
       drop.add_errors = {
         :id => ['already taken']
@@ -52,8 +55,8 @@ class Drop < Struct.new(:attributes)
     end
     drop.persisted = true
 
-    json_attributes = attributes.except(:file)
-    file = attributes[:file]
+    json_attributes = drop_attributes.except(:file)
+    file = drop_attributes[:file]
     if file
       REDIS.set(file_key_for(id), file.read)
     end
@@ -87,10 +90,15 @@ class Drop < Struct.new(:attributes)
     self.id
   end
 
+  def file=(file)
+    self.attributes ||= Hash.new
+    self.attributes[:file] = file
+  end
+
   def file
     file_data = REDIS.get(Drop.file_key_for(self.id))
     return nil if file_data.nil?
-    FileDrop::RedisFile.new(file_data)
+    FileDrop::RedisFile.new(file_data, self.content_type)
   end
 
   private

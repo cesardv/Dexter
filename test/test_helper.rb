@@ -12,7 +12,7 @@ class ActiveSupport::TestCase
   end
 
   def mock_file
-    File.open(Rails.root.join("test", "fixtures", "farnsworth.png"))
+    FileWithContentType.open(Rails.root.join("test", "fixtures", "farnsworth.png"))
   end
 
 end
@@ -20,5 +20,12 @@ end
 class ActionController::TestCase
   def mock_file
     fixture_file_upload(Rails.root.join('test', 'fixtures', 'farnsworth.png'))
+  end
+end
+
+
+class FileWithContentType < File
+  def content_type
+    "image/png"
   end
 end
