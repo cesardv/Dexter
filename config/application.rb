@@ -26,5 +26,7 @@ module Dexter
     config.assets.enabled = true
     config.assets.version = '1.0'
     config.threadsafe!
+
+    config.settings = YAML::load(File.open(Rails.root.join('config', 'application.yml')).read).with_indifferent_access
   end
 end

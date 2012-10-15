@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class DropsControllerTest < ActionController::TestCase
+  setup do
+    Rails.application.config.settings[:private_server] = false
+  end
+
   test "new" do
     get :new
     assert_response :success

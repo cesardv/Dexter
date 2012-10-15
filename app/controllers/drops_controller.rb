@@ -1,4 +1,6 @@
 class DropsController < ApplicationController
+  before_filter :do_authentication
+
   before_filter :require_current_drop, :only => :show
   def new
     @drop = Drop.new
@@ -26,6 +28,19 @@ class DropsController < ApplicationController
 
 
   private
+
+  def do_authentication
+    if settings[:private_server]
+      authenticate_or_request_with_http_basic do |username, password|
+        username == settings[:username] && password == settings[:password]
+      end
+
+    end
+  end
+
+  def settings
+    Rails.application.config.settings
+  end
 
   def require_current_drop
     render_not_found unless current_drop
