@@ -1,4 +1,3 @@
-TODO:
+![Pretty Pictures](http://dexter.io/assets/logo.png)
 
-2. Add support for file uploads
-3. Add stats
+Check back for details on configuring and deploying so you can get http://yourname.io to be your personal redirect + fileserver.
