@@ -56,28 +56,23 @@
  
         .clr
         
-
-       
-
-
-:css
-  .left-half {
-    font-family:Colaborate;
-  }
-  @media only screen and (max-width: 900px){
-    .wrapper {
-      padding: 10px;
-    }
-
-    .right-half {
-      width:95%;
-    }
+= content_for :head do
+  :css
     .left-half {
-      display:none;
+      font-family:Colaborate;
     }
+    @media only screen and (max-width: 900px){
+      .wrapper {
+        padding: 10px;
+      }
 
-  }
-
+      .right-half {
+        width:95%;
+      }
+      .left-half {
+        display:none;
+      }
+    }
 
 :javascript
   $(function() { window.DEXTER.drops.new(); });
