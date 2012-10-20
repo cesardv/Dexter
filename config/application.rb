@@ -6,11 +6,10 @@ require "active_resource/railtie"
 require "rails/test_unit/railtie"
 require "sprockets/railtie"
 
-# Auto-require default libraries and those for the current Rails environment. 
-Bundler.require :default, Rails.env
-
-
 if defined?(Bundler)
+  # Auto-require default libraries and those for the current Rails environment. 
+  Bundler.require :default, Rails.env
+
   Bundler.require(*Rails.groups(:assets => %w(development test)))
 end
 
