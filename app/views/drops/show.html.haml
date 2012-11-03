@@ -18,6 +18,10 @@
       %b url
       =url_for(:controller => :dispatches, :action => :show, :id => current_drop.id, :host => request.host)
 
+    .attr
+      %b actions
+      = link_to "destroy", drop_path(current_drop), :method => :delete, :confirm => "You sure?"
+
 .right-half
   %h2.highlight-color stats
 

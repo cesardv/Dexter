@@ -5,6 +5,7 @@ require "action_mailer/railtie"
 require "active_resource/railtie"
 require "rails/test_unit/railtie"
 require "sprockets/railtie"
+require 'active_support/all'
 
 if defined?(Bundler)
   # Auto-require default libraries and those for the current Rails environment. 

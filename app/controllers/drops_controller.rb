@@ -26,6 +26,11 @@ class DropsController < ApplicationController
   def show
   end
 
+  def destroy
+    REDIS.del(params[:id])
+    redirect_to root_url
+  end
+
 
   private
 

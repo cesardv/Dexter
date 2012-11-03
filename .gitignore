@@ -57,3 +57,5 @@ log/sql_select_counts/**
 # Ignore generated doc files.
 public/doc/*.html
 public/doc/*/index.html
+
+config/application.yml

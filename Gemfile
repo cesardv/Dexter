@@ -14,10 +14,10 @@ gem 'redis'
 gem 'haml'
 
 gem 'capistrano'
-gem 'unicorn'
 gem 'simple_form'
 gem 'agent_orange'
 
+gem 'thin'
 group :test, :development do
   gem 'spin'
   gem 'shoulda'
